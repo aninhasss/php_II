@@ -1,0 +1,24 @@
+body{
+    background-color: rgb(150, 187, 211);
+    display: grid;
+    place-items: center; 
+}
+
+.result{
+    background-color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 1%;
+    border-radius: 15px;
+    align-items:  left;
+    margin-top: 2cm;
+}
+
+.link, a{
+    color: rgb(0, 0, 0);
+    padding: 0.2cm;
+    margin-top: 1cm;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 15px;
+}
