@@ -49,8 +49,6 @@
                 $imagem = "face5.png";
                 break;
         }
-
-        echo $sorteio;
     ?>
 
     <img src="<?php echo $imagem; ?>" alt="Face do dado">
