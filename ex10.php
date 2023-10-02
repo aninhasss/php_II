@@ -24,63 +24,73 @@
     </div class="link">
 
     <div class="result">
-    <h2>Ímpar ou Par</h2>
+    <h2>Data</h2>
+    <h4>Escolha uma data qualquer na forma dd/mm/aaaa</h4>
 
     <form method="POST">
-        <label>Data: </label><input id="data" name="data" type="text">
+        <label>Data: </label>
+        <input type="text" id="data" name="data" required pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/aaaa">
         <input type="submit" value="Enviar">
     </form>
 
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            $data = $_POST["data"];
-            $separador = data.split("/");
+
+        function dataPorExtenso($data) {
+            list($dia, $mes, $ano) = explode('/', $data);
 
             switch ($mes) {
-                case 1:
-                    echo "Janeiro";
+                case '01':
+                    $mes_extenso = 'janeiro';
                     break;
-                case 2:
-                    return ("Fevereiro");
-                     break;
-                case 3:
-                    return ("Março");
+                case '02':
+                    $mes_extenso = 'fevereiro';
                     break;
-                case 4:
-                    return ("Abril");
+                case '03':
+                    $mes_extenso = 'março';
                     break;
-                case 5:
-                    return ("Maio");
+                case '04':
+                    $mes_extenso = 'abril';
                     break;
-                case 6:
-                    return ("Junho");
+                case '05':
+                    $mes_extenso = 'maio';
                     break;
-                case 7:
-                    return ("Julho");
+                case '06':
+                    $mes_extenso = 'junho';
                     break;
-                case 8:
-                    return ("Agosto");
+                case '07':
+                    $mes_extenso = 'julho';
                     break;
-                case 9:
-                    return ("Setembro");
+                case '08':
+                    $mes_extenso = 'agosto';
                     break;
-                case 10:
-                    return ("Outubro");
+                case '09':
+                    $mes_extenso = 'setembro';
                     break;
-                case 11:
-                    return ("Novembro");
+                case '10':
+                    $mes_extenso = 'outubro';
                     break;
-                case 12:
-                    return ("Dezembro");
+                case '11':
+                    $mes_extenso = 'novembro';
                     break;
-        
+                case '12':
+                    $mes_extenso = 'dezembro';
+                    break;
                 default:
+                    $mes_extenso = 'inválido';
                     break;
             }
-                
-            alert("Data Formatada: \n" + separador[0] + " de " + enviar(parseInt(separador[1])) + " de " + separador[2]);
-            
+
+            return "$dia de $mes_extenso de $ano";
         }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            $data = $_POST["data"];
+
+            $data_extenso = dataPorExtenso($data);
+
+            echo "Data: $data_extenso";          
+        }
+
     ?>
     </div class="result">
 
